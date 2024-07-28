@@ -24,7 +24,7 @@ public class FreelancerFixture {
     }
 
     public static FreelancerAttributes getMostSkillfulFreelancerAttributes() {
-        return new FreelancerAttributes(10, 0);
+        return new FreelancerAttributes(10, 50);
     }
 
     public static FreelancerAttributes getMostViewedFreelancerAttributes() {
