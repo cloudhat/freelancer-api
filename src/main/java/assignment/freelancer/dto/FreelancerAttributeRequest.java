@@ -14,18 +14,19 @@ public class FreelancerAttributeRequest {
     private SortType sortType;
     private Boolean descending = true;
     private Integer pageNum = 0;
-    private Integer pageSize = MAX_PAGE_SIZE;
+    public Integer pageSize = MAX_PAGE_SIZE;
 
     public FreelancerAttributeRequest(String sortType, Boolean descending, Integer pageNum, Integer pageSize) {
-
-        if (pageSize > MAX_PAGE_SIZE) {
-            throw new IllegalArgumentException(String.format("페이지의 최대 크기는 %d 입니다.", MAX_PAGE_SIZE));
-        }
-
         this.sortType = SortType.valueOf(sortType);
-        this.descending = descending;
-        this.pageNum = pageNum;
-        this.pageSize = pageSize;
+        this.descending = (descending != null) ? descending : this.descending;
+        this.pageNum = (pageNum != null) ? pageNum : this.pageNum;
+
+        if (pageSize != null) {
+            if (pageSize > MAX_PAGE_SIZE) {
+                throw new IllegalArgumentException(String.format("페이지의 최대 크기는 %d 입니다.", MAX_PAGE_SIZE));
+            }
+            this.pageSize = pageSize;
+        }
     }
 
     public enum SortType {
