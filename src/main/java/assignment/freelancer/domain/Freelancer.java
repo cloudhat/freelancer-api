@@ -28,4 +28,8 @@ public class Freelancer {
     @Column(updatable = false, nullable = false)
     private LocalDateTime createDate;
 
+    public Freelancer(String name, LocalDateTime createDate) {
+        this.name = name;
+        this.createDate = createDate;
+    }
 }

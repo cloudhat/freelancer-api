@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Getter
-@Table(indexes = {
+@Table(name = "freelancerAttributes", indexes = {
         @Index(name = "idx_techSkillLevel", columnList = "techSkillLevel"),
         @Index(name = "idx_viewCount", columnList = "viewCount"),
 })
@@ -29,5 +29,14 @@ public class FreelancerAttributes {
     @OneToOne
     @JoinColumn(name = "freelancer_id", nullable = false)
     Freelancer freelancer;
+
+    public FreelancerAttributes(int techSkillLevel, int viewCount) {
+        this.techSkillLevel = techSkillLevel;
+        this.viewCount = viewCount;
+    }
+
+    public void setFreelancer(Freelancer freelancer) {
+        this.freelancer = freelancer;
+    }
 
 }
